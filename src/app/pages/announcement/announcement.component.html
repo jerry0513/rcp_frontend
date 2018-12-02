@@ -1,0 +1,46 @@
+<div class="row">
+  <p class="h1">公告</p>
+  <button type="button" class="btn btn-secondary text-light ml-auto" *ngIf='isT' routerLink="add">新增</button>
+</div>
+<table class="table">
+  <thead *ngIf="isT">
+    <tr>
+      <th scope="col" (click)="sort('title')">標題</th>
+      <th scope="col" (click)="sort('post_date')">發布時間</th>
+      <th scope="col" (click)="sort('end_date')">結束時間</th>
+      <th scope="col">功能</th>
+    </tr>
+  </thead>
+  <thead *ngIf="!isT">
+    <tr>
+      <th scope="col" (click)="sort('title')">標題</th>
+      <th scope="col" (click)="sort('post_date')">發布時間</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="isT">
+    <tr *ngFor='let announcement of announcements'>
+      <td>{{announcement.title}}</td>
+      <td>{{announcement.post_date | date}}</td>
+      <td>{{announcement.end_date}}</td>
+      <td>
+          <button type="button" class="btn btn-info text-light" routerLink="edit/{{announcement.id}}" (click)="editAnnouncement(announcement.id)">
+            編輯
+          </button>
+          <button type="submit" class="btn btn-light text-dark ml-5" (click)="deleteAnnouncement(announcement.id)">
+            刪除
+          </button>
+      </td>
+    </tr>
+  </tbody>
+  <!-- <tbody *ngIf="!isT">
+    <tr *ngFor='let announcement of announcements'>
+      <td>{{announcement.title}}</td>
+      <td>
+        <textarea cols="50">{{announcement.content}}</textarea>
+      </td>
+      <td>{{announcement.post_date | date}}</td>
+    </tr>
+  </tbody> -->
+</table>
+<router-outlet></router-outlet>

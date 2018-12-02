@@ -1,0 +1,31 @@
+.input-group-append {
+  font-size: 1rem;
+  text-align: left;
+  max-width: 25%;
+  min-width: 130px;
+}
+
+.dropdown {
+  min-width: 7rem;
+}
+
+.dropdown-menu {
+  width: auto;
+}
+
+@media (max-width: 580px){
+  .input-group-append button {
+    width: 134px;
+    border-radius: 0.5rem;
+  }
+  .input-group {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .input-group input {
+    width: 100%;
+  }
+  .dropdown-menu.show {
+    width: 134px;
+  }  
+}

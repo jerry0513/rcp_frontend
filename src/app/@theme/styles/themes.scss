@@ -1,0 +1,87 @@
+// @nebular theming framework
+@import '~@nebular/theme/styles/theming';
+// @nebular out of the box themes
+@import '~@nebular/theme/styles/themes';
+
+// which themes you what to enable (empty to enable all)
+$nb-enabled-themes: (default, cosmic);
+
+$nb-themes: nb-register-theme((
+ // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+
+  font-main: Roboto,
+  font-secondary: Exo,
+), default, default);
+
+
+$theme-white: #f7f8f8;
+$active-color: #fa607c;
+$linear-color: linear-gradient(45deg, #f77062 35%, #ff5196 60%);
+
+$nb-themes: nb-register-theme((
+  
+
+  separator: $theme-white,
+  // app wise variables for each theme
+  sidebar-header-gap: 2rem,
+  sidebar-header-height: initial,
+  layout-content-width: 1400px,
+
+  font-main: Roboto,
+  font-secondary: Exo,
+  color-success: $active-color,
+
+  btn-secondary-bg: $active-color,
+  btn-secondary-border: $active-color,
+  link-color: #000000,
+  link-color-visited: #000000,
+  color-fg-highlight: $active-color,
+
+  color-bg: $theme-white,
+  color-fg-text:  rgba(0,0,0,0.3),
+  color-fg-heading: rgba(0,0,0,0.5),
+  
+  layout-bg: $theme-white,
+  layout-fg: #000000,
+  header-bg: $linear-color,
+  header-fg: $theme-white,
+  header-shadow: 0,
+  footer-bg: $linear-color,
+  footer-fg: $theme-white,
+  footer-shadow: 0,
+
+  actions-fg: $theme-white,
+  actions-separator: $theme-white,
+
+  sidebar-bg: $theme-white,
+  sidebar-width: 8rem,
+  
+  menu-fg: #000000,
+  menu-active-bg: $theme-white,
+  menu-active-fg: #000000,
+  menu-active-font-weight: 800,
+  menu-icon-color	: #000000,
+
+
+  user-fg: #000000,
+  user-bg: #ffffff,
+  user-fg-highlight	: $theme-white,
+
+  badge-primary-bg-color:	#000000,
+  
+  form-control-bg: #ffffff,
+  form-control-focus-bg: $theme-white,
+  form-control-placeholder-color: rgba(0,0,0,0.5),
+  form-control-selected-border-color: $active-color,
+
+  route-tabs-fg: #000,
+  route-tabs-padding: 1rem,	
+
+  scrollbar-fg: $active-color,
+  scrollbar-bg: $theme-white,
+  
+), cosmic, cosmic);
+

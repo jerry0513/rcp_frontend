@@ -1,0 +1,68 @@
+<p class="h1">統計</p>
+
+<div class="row">
+  <div class="col">
+    <form class="form-row">
+      <div class="form-group col-6">
+        <label class="h5 col-form-label">科目</label>
+        <select class="form-control" [(ngModel)]="selectedSubject" name="subject">
+          <option *ngFor="let subject of subjects" [value]="subject.id">
+            {{subject.subjects_name}}
+          </option>
+        </select>
+      </div>
+      <!-- <div class="form-group col-3">
+        <label class="h6 col-form-label">日期</label>
+        <select class="form-control"  [(ngModel)]="selectedDate" name="date">
+          <option *ngFor="let record of rollcallRecords" [value]="record.record_date">
+            {{record.record_date}}
+          </option>
+        </select>
+      </div> -->
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table col-8">
+    <thead *ngIf="isT">
+      <tr>
+        <th scope="col" (click)="sort('id')">學號</th>
+        <th scope="col" (click)="sort('date')">日期</th>
+        <th scope="col" (click)="sort('section')">節次</th>
+        <th scope="col" (click)="sort('type')">類別</th>
+      </tr>
+    </thead>
+    <thead *ngIf="!isT">
+      <tr>
+        <th scope="col" (click)="sort('date')">日期</th>
+        <th scope="col" (click)="sort('section')">節次</th>
+        <th scope="col" (click)="sort('type')">類別</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="isT">
+      <tr *ngFor="let record of rollcallRecords">
+        <td *ngIf="record.subjects == selectedSubject">{{record.id_number}}</td>
+        <td *ngIf="record.subjects == selectedSubject">{{record.record_date}}</td>
+        <td *ngIf="record.subjects == selectedSubject">{{record.section}}</td>
+        <td *ngIf="record.subjects == selectedSubject">{{record.record_type}}</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="!isT">
+      <tr *ngFor="let record of rollcallRecords">
+        <td *ngIf="record.subjects == selectedSubject && record.student == userId">{{record.record_date}}</td>
+        <td *ngIf="record.subjects == selectedSubject && record.student == userId">{{record.section}}</td>
+        <td *ngIf="record.subjects == selectedSubject && record.student == userId">{{record.record_type}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="col-4">
+    <nb-card>
+      <nb-card-body>
+        <ngx-chartjs-pie [selectedSubject]='selectedSubject' [isT]='isT'
+         [userId]='userId' [rollcallRecords]='rollcallRecords'></ngx-chartjs-pie>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<p class="h1">匯入{{unit}}</p>
+
+<div class="form-group">
+  <div class="row">
+    <label class="h5 my-auto">單位</label>
+    <select class="form-control col-2" [(ngModel)]="unit" (change)="isSelectedCurStudent()" name="unit">
+      <option>學生</option>
+      <option>老師</option>
+      <option>課程</option>
+      <option>課表節次</option>
+      <option>課程學生</option>
+    </select>
+    <a class="my-auto ml-1 text-secondary" id="download" href="../assets/examples/example.xlsx" download="example.xlsx">匯入範例下載</a>
+    <input class="my-auto ml-5" type="file" (change)="onFileChange($event)" multiple="false"/>
+    <button type="button" class="btn btn-secondary text-light ml-auto" (click)="upload()">上傳</button>
+  </div>
+</div>
+
+<div *ngIf="isShow" class="form-group">
+  <div class="row"> 
+    <label class="h5 my-auto">學年</label> 
+    <select class="form-control col-2" [(ngModel)]="year" name="year">
+      <option>107</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="h5 my-auto">學期</label>
+    <select class="form-control col-2" [(ngModel)]="semester" name="semester">
+      <option>上學期</option>
+      <option>下學期</option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="h5 my-auto">課程</label>
+    <select class="form-control col-3" [(ngModel)]="subjectsName" (change)="displaySubjectTeacher()" name="subjectName">
+      <option *ngFor="let subject of subjects">
+        {{subject.subjects_name}}
+      </option>
+    </select>
+  </div>
+  <div class="row">
+    <label class="h5 my-auto">老師</label>
+      <select class="form-control col-2" [(ngModel)]="teacherName" name="teacherName">
+        <option *ngFor="let teacher of teacherList">
+          {{teacher}}
+        </option>
+    </select>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table">
+    <tr *ngFor="let row of displayData">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </table>
+</div>

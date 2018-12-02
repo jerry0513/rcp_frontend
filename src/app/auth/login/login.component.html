@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+  <form>
+    <label>Username</label>
+    <div class="input-group">
+      <input type="text" class="form-control" name="account" id="account" placeholder="Username"
+        [(ngModel)]="account" required #accountVal="ngModel">
+      <div class="dropdown" ngbDropdown>
+        <button class="btn btn-secondary text-light dropdown-toggle pl-1 pr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          ngbDropdownToggle>
+          {{dropdownBtText}}
+        </button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+          <div class="dropdown-item" (click)="onSelectOrgUnit()">單位管理者</div>
+          <div role="separator" class="dropdown-divider"></div>
+          <div class="dropdown-item" *ngFor="let orgUnit of orgUnits" (click)="onSelectOrgUnit(orgUnit)">{{orgUnit.name}}</div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="accountVal.invalid && (accountVal.dirty || accountVal.touched)" class="alert alert-danger">
+      <div *ngIf="accountVal.errors.required">
+        請輸入Username
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password" required #passwordVal="ngModel">
+      <div *ngIf="passwordVal.invalid && (passwordVal.dirty || passwordVal.touched)" class="alert alert-danger">
+        <div *ngIf="passwordVal.errors.required">
+          請輸入Password
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-secondary text-light" (click)="onLogin()">登入</button>
+    <div *ngIf="isLoginSuccess == false" class="alert alert-danger">
+      輸入的Username或Password錯誤
+    </div>
+  </form>
+</div>

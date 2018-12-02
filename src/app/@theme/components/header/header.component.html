@@ -1,0 +1,22 @@
+<div class="header-container" [class.left]="position === 'normal'" [class.right]="position === 'inverse'">
+  <div class="logo-containter">
+    <a (click)="toggleSidebar()" href="#" class="navigation">
+      <i class="nb-menu"></i>
+    </a>
+    <a (click)="goToHome()" href="#" class="logo" id="header-loge">RCP</a>
+  </div>
+
+  <nb-actions class="ml-auto" size="large" *ngIf="username">
+    <nb-action (click)="goToLogout()">
+      <a class="top-menu">登出</a>
+    </nb-action>
+    <nb-action>    
+      <nb-user [name]="username" [title]="role"></nb-user>
+    </nb-action>
+  </nb-actions>
+  <nb-actions class="ml-auto" size="large" *ngIf="!username">
+    <nb-action (click)="goToLogin()">
+      <a class="top-menu">登入</a>
+    </nb-action>
+  </nb-actions>
+</div>

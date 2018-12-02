@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">時間</th>
+      <th scope="col">課程</th>
+      <th scope="col">教室</th>
+      <th scope="col">老師</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let subject of curSubjectsList">
+    <tr scope="row" *ngFor="let s of selectedWeek(subject)">
+      <th>
+        {{s.start_time}}
+        <br>{{s.end_time}}</th>
+      <td>{{subject.subjects_name}}</td>
+      <td>{{subject.class_room}}</td>
+      <td>{{subject.teacher}}</td>
+    </tr>
+  </tbody>
+</table>
